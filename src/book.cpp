@@ -38,7 +38,7 @@ bool Book::AddAuthor(const Author &author) {
   // здесь мог бы быть ваш сногсшибающий код ...
   // Tip 1: для поиска дубликатов можно использовать цикл for-each
   for (const Author &counted_author: authors_){
-      if (author == counted_author) return false;
+      if (author.GetFullName() == counted_author.GetFullName()) return false;
   }
   authors_.push_back(author);
   return true;
