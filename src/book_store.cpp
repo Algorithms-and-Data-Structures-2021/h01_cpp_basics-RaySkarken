@@ -10,6 +10,7 @@ ResizeStorageStatus resize_storage(Book *&storage, int size, int new_capacity) {
   if (storage == nullptr) return ResizeStorageStatus::NULL_STORAGE;
   if (size < 0) return ResizeStorageStatus::NEGATIVE_SIZE;
   if (new_capacity <= size) return ResizeStorageStatus::INSUFFICIENT_CAPACITY;
+
   // Tip 2: не забудьте высвободить ранее выделенную память под хранилище
   Book *new_storage = new Book[new_capacity]{};
   std::copy(storage, storage + size, new_storage);
@@ -28,6 +29,8 @@ BookStore::BookStore(const std::string &name) : name_{name} {
   }
 
   // здесь мог бы быть ваш сотрясающий землю и выделяющий память код ...
+  storage_capacity_ = kInitStorageCapacity;
+  storage_ = new Book[storage_capacity_]{};
 }
 
 // 3. реализуйте деструктор ...
