@@ -49,7 +49,7 @@ void BookStore::AddBook(const Book &book) {
   if (storage_size_ == storage_capacity_) {
     // здесь мог бы быть ваш умопомрачительный код ...
     // Tip 1: используйте функцию resize_storage_internal, задав новый размер хранилища
-    const ResizeStorageStatus status = resize_storage_internal(kCapacityCoefficient);
+    const ResizeStorageStatus status = resize_storage_internal(storage_capacity_ + kCapacityCoefficient);
     // Tip 2: не забудьте обработать статус вызова функции
     if (status != ResizeStorageStatus::SUCCESS) return;
   }
